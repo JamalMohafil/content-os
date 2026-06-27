@@ -4,6 +4,8 @@ description: Write an on-brand Instagram caption + hooks + hashtags
 
 Write an Instagram caption for: **$ARGUMENTS**
 
+`$ARGUMENTS` is a **topic** (e.g. "3 AI tools that save me hours") OR the **name/slug of a piece I already built** (e.g. "the what-is-geo carousel"). It is NOT a URL — don't expect an Instagram post link. If it names an existing project, read that project's content first and write a caption that matches it.
+
 Follow `CLAUDE.md`:
 
 1. Read `brand-kit/brand.json` and match the voice, language, and CTA exactly.

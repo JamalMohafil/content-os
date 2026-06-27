@@ -233,7 +233,7 @@ function HelpPanel({ onClose }: { onClose: () => void }) {
     { cmd: "/carousel موضوعك", desc: "كاروسيل انستغرام (1080×1350)" },
     { cmd: "/story فكرتك", desc: "ستوري بريميوم (1080×1920)" },
     { cmd: "/thumbnail نص", desc: "ثامبنيل يوتيوب (16:9)" },
-    { cmd: "/caption رابط", desc: "كابشن + هاشتاغات" },
+    { cmd: "/caption موضوع", desc: "كابشن + هاشتاغات لموضوع أو مشروع" },
     { cmd: "/repurpose", desc: "حوّل المحتوى لمنصات ثانية" },
   ];
   return (

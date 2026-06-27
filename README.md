@@ -69,7 +69,7 @@ The agent builds it in *your* system. Go back to the Studio and **refresh** — 
 | `/carousel <topic>` | Instagram carousel, in your system |
 | `/story <idea>` | Story sequence, in your system |
 | `/thumbnail <text>` | YouTube thumbnail |
-| `/caption <topic or link>` | Caption + hashtags in your voice |
+| `/caption <topic or piece>` | Caption + hashtags in your voice |
 | `/repurpose <project>` | Adapt to other platforms |
 
 **Edit (right in the Studio)** — open any piece and hit **تعديل**: change the **text** and the **brand colors** there, then **احفظ وأعد الرندر** — it re-renders to PNG instantly (Playwright), keeping the design pixel-perfect.
