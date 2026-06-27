@@ -17,7 +17,7 @@ No design tools. No code. Just your ideas.
 | 🖼️ **Thumbnails** | YouTube thumbnails with bold text | 16:9 |
 | ✍️ **Captions** | Hooks, captions, and hashtags | — |
 | 🔄 **Repurpose** | One idea → Reel, LinkedIn, X thread | — |
-| 📚 **Library** | Your reusable images, music & audio | — |
+| 📚 **Library** | Your reusable images, video, music & audio | — |
 
 ---
 
@@ -80,7 +80,7 @@ The agent builds it in *your* system. Go back to the Studio and **refresh** — 
 
 **Download** — per-slide, or the whole variant as a **ZIP**.
 
-**Assets** — drop images/music into `public/assets-library/{images,music,audio}/`; they appear under the **Library** tab.
+**Assets** — drop images/music into `public/assets-library/{images,video,music,audio}/`; they appear under the **Library** tab.
 
 ---
 
@@ -101,7 +101,7 @@ content-os/
 │   ├── content/                ← everything the agent makes (git-ignored, local only)
 │   │   ├── carousels/  stories/  thumbnails/
 │   │   └── <slug>/  ( variants/v1/index.html · png/ · assets/ · studio.json )
-│   └── assets-library/         ← your images, music, audio (git-ignored, local only)
+│   └── assets-library/         ← your images, video, music, audio (git-ignored, local only)
 └── src/                        ← the Studio web app (you don't touch this)
 ```
 

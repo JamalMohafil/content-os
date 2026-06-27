@@ -229,31 +229,51 @@ export default function StudioPage() {
 /* --------------------------- help panel --------------------------- */
 
 function HelpPanel({ onClose }: { onClose: () => void }) {
-  const lines = [
-    { cmd: "/carousel موضوعك", desc: "كاروسيل انستغرام (1080×1350)" },
-    { cmd: "/story فكرتك", desc: "ستوري بريميوم (1080×1920)" },
-    { cmd: "/thumbnail نص", desc: "ثامبنيل يوتيوب (16:9)" },
-    { cmd: "/caption موضوع", desc: "كابشن + هاشتاغات لموضوع أو مشروع" },
-    { cmd: "/repurpose", desc: "حوّل المحتوى لمنصات ثانية" },
+  const steps = [
+    "افتح Claude Code جوّا مجلد المشروع (content-os)",
+    "اكتب أمر من تحت — انسخ المثال وبدّل الموضوع بفكرتك",
+    "ارجع لهون واضغط تحديث (F5) — بيطلعلك المحتوى جاهز تشوفه وتنزّله",
+  ];
+  const cmds: { cmd: string; desc: string; ex: string; tag?: string }[] = [
+    { cmd: "/setup", desc: "يسألك عن براندك ويجهّز ستايلك الخاص", ex: "/setup", tag: "أول مرة ابدأ من هون" },
+    { cmd: "/carousel", desc: "كاروسيل انستغرام (1080×1350)", ex: "/carousel 3 أدوات AI وفرت عليي ساعات" },
+    { cmd: "/story", desc: "ستوري بريميوم (1080×1920)", ex: "/story رحلتي ببناء أول تطبيق" },
+    { cmd: "/thumbnail", desc: "ثامبنيل يوتيوب (16:9)", ex: "/thumbnail بنيت تطبيق بساعة" },
+    { cmd: "/caption", desc: "كابشن + هاشتاغات لموضوع أو لمشروع عملته", ex: "/caption كاروسيل GEO" },
+    { cmd: "/repurpose", desc: "ياخد محتوى عملته ويحوّله لريل ولينكدإن وثريد", ex: "/repurpose كاروسيل GEO" },
   ];
   return (
     <div className="border-t border-[var(--purple-100)] bg-[var(--purple-50)]">
       <div className="mx-auto max-w-6xl px-5 py-4">
         <div className="mb-3 flex items-center justify-between">
-          <p className="text-sm font-bold text-[var(--purple-900)]">
-            افتح Claude Code داخل هذا المجلد واكتب أحد الأوامر، بعدها رجّع لهون وحدّث الصفحة:
-          </p>
+          <h3 className="text-base font-extrabold text-[var(--purple-900)]">كيف تستخدم Content OS؟</h3>
           <button onClick={onClose} className="text-[var(--gray-400)] hover:text-[var(--gray-500)]">
             <X size={18} />
           </button>
         </div>
-        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {lines.map((l) => (
-            <div key={l.cmd} className="flex items-center gap-3 rounded-xl border border-[var(--purple-100)] bg-white px-3 py-2">
-              <code dir="ltr" className="rounded-lg bg-[var(--purple-900)] px-2.5 py-1 font-mono text-xs text-white">
-                {l.cmd}
-              </code>
-              <span className="text-xs text-[var(--gray-500)]">{l.desc}</span>
+
+        <div className="mb-4 grid gap-2 sm:grid-cols-3">
+          {steps.map((s, i) => (
+            <div key={i} className="flex items-start gap-2.5 rounded-xl border border-[var(--purple-100)] bg-white px-3 py-2.5">
+              <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[var(--purple-600)] text-xs font-bold text-white">{i + 1}</span>
+              <span className="text-xs leading-relaxed text-[var(--gray-600)]">{s}</span>
+            </div>
+          ))}
+        </div>
+
+        <p className="mb-2 text-xs font-bold text-[var(--purple-900)]">الأوامر — اكتبها داخل Claude Code:</p>
+        <div className="grid gap-2 sm:grid-cols-2">
+          {cmds.map((c) => (
+            <div key={c.cmd} className="rounded-xl border border-[var(--purple-100)] bg-white px-3 py-2.5">
+              <div className="mb-1.5 flex flex-wrap items-center gap-2">
+                <code dir="ltr" className="rounded-lg bg-[var(--purple-900)] px-2.5 py-1 font-mono text-xs font-bold text-white">{c.cmd}</code>
+                <span className="text-xs font-semibold text-[var(--purple-900)]">{c.desc}</span>
+                {c.tag && <span className="rounded-full bg-[var(--purple-100)] px-2 py-0.5 text-[10px] font-bold text-[var(--purple-600)]">{c.tag}</span>}
+              </div>
+              <div className="flex items-center gap-2 rounded-lg bg-[var(--purple-50)] px-2.5 py-1.5">
+                <span className="shrink-0 text-[10px] font-bold text-[var(--purple-400)]">مثال</span>
+                <code dir="ltr" className="font-mono text-[11px] text-[var(--gray-600)]">{c.ex}</code>
+              </div>
             </div>
           ))}
         </div>
@@ -696,7 +716,7 @@ function AssetLibrary({ assets, b }: { assets: Asset[]; b: number }) {
           <Library size={32} className="mx-auto mb-3 text-[var(--purple-300)]" />
           <p className="font-semibold text-[var(--purple-900)]">المكتبة فاضية</p>
           <p className="mt-1 text-sm text-[var(--gray-500)]">
-            حط ملفاتك في <code dir="ltr" className="rounded bg-[var(--purple-50)] px-1.5 py-0.5 font-mono text-xs">public/assets-library/</code> (images / music / audio) وحدّث الصفحة.
+            حط ملفاتك في <code dir="ltr" className="rounded bg-[var(--purple-50)] px-1.5 py-0.5 font-mono text-xs">public/assets-library/</code> (images / video / music / audio) وحدّث الصفحة.
           </p>
         </div>
       ) : (
@@ -719,7 +739,7 @@ function AssetCard({ asset, b }: { asset: Asset; b: number }) {
         ) : asset.kind === "audio" ? (
           <Music size={34} className="text-[var(--purple-300)]" />
         ) : asset.kind === "video" ? (
-          <Film size={34} className="text-[var(--purple-300)]" />
+          <video src={asset.path} controls playsInline className="h-full w-full bg-black object-contain" />
         ) : (
           <Type size={34} className="text-[var(--purple-300)]" />
         )}
