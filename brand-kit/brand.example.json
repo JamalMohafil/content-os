@@ -20,7 +20,9 @@
   "fonts": {
     "heading": "Pick in /setup",
     "latin": "Pick in /setup",
-    "googleFontsUrl": ""
+    "source": "google or local — /setup asks if you have your own font files",
+    "googleFontsUrl": "",
+    "localFiles": []
   },
   "links": {
     "primary": "",

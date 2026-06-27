@@ -13,6 +13,7 @@ You build premium, cinematic Instagram stories by starting from a proven templat
 2. **Copy the template** `templates/story/index.html` → `public/content/stories/<slug>/variants/v1/index.html`.
 3. **Theme it** — change ONLY the `:root` CSS variables + font links to the user's brand:
    - `--bg --accent --ink --muted --proof` (proof = the color for numbers/stats) and `--font-head --font-latin`.
+   - Fonts: if `brand.json` `fonts.source` is `google`, swap the Google Fonts `<link>`; if `local`, remove it and paste the `@font-face` block from `design-system.md` (points at `/assets-library/fonts/<file>`).
    Keep all the layout CSS (glow, grid, vignette, highlight blocks, safe zones) exactly as-is.
 4. **Fill content** — replace each `data-field`. Set `brand` + `handle` (they repeat). If the user has an avatar image, swap the `.dot` span for `<img src="/assets-library/images/<file>" class="dot">`.
 5. **Shape the sequence** — keep/duplicate/remove `.story--hook / --point / --proof / --cta`. Update the counters (`01 / 04`). A good arc: hook → point(s) → proof → CTA tied to `brand.json` `cta`. Reuse the existing classes; don't write new layout CSS.

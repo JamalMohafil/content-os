@@ -13,7 +13,7 @@ You build Instagram carousels that look **professional** by starting from a prov
 2. **Copy the template** `templates/carousel/index.html` to `public/content/carousels/<slug>/variants/v1/index.html`. This is your starting structure.
 3. **Theme it** — change ONLY the `:root` CSS variables and the font `<link>` to the user's brand:
    - `--bg --surface --accent --ink --muted` ← their palette (`brand.json` colors).
-   - `--font-head --font-latin` + the Google Fonts link ← their fonts.
+   - `--font-head --font-latin` ← their fonts. If `brand.json` `fonts.source` is `google`, swap the Google Fonts `<link>`. If it's `local`, **remove the `<link>` and paste the `@font-face` block from `design-system.md`** (it points at `/assets-library/fonts/<file>`).
    Keep all the layout CSS exactly as-is. The composition is already balanced.
 4. **Fill the content** — replace each `data-field` text with the user's real content. Set `data-field="brand"` to their brand name and `data-field="handle"` to their @handle (these repeat across slides — set once, they update everywhere).
 5. **Shape the deck** — keep/duplicate/remove the `.slide--cover / --list / --stat / --cta` archetypes to fit the topic. Update the `.page` numbers. Aim for **7–10 slides**: cover hook → value slides → CTA tied to `brand.json` `cta`. Reuse the existing archetype CSS classes for any new slide — don't write new layout CSS.
