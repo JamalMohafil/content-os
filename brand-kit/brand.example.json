@@ -1,0 +1,39 @@
+{
+  "_README": "Don't edit this by hand. Run `/setup` in Claude Code — the brand-setup skill interviews you and GENERATES your own brand.json + design-system.md from your answers. This .example file is just the shape.",
+
+  "identity": {
+    "name": "Your Name",
+    "handle": "@yourhandle",
+    "brandName": "Your Brand",
+    "niche": "what you make content about",
+    "language": "e.g. English, or Levantine Arabic + English tech terms",
+    "voice": "3–5 words on how you sound (e.g. direct, warm, no hype)"
+  },
+  "colors": {
+    "background": "#FFFFFF",
+    "surface": "#F5F5F7",
+    "accent": "#000000",
+    "ink": "#111111",
+    "muted": "#8A8A8A",
+    "proof": "#16A34A"
+  },
+  "fonts": {
+    "heading": "Pick in /setup",
+    "latin": "Pick in /setup",
+    "googleFontsUrl": ""
+  },
+  "links": {
+    "primary": "",
+    "instagram": "",
+    "youtube": ""
+  },
+  "cta": {
+    "keyword": "",
+    "line": "",
+    "goal": ""
+  },
+  "assets": {
+    "logo": "",
+    "avatar": ""
+  }
+}

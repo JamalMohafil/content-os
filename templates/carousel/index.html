@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080" />
+  <title>Carousel Template</title>
+  <!--
+    PROFESSIONAL CAROUSEL TEMPLATE — themeable, editable.
+    The builder copies this file, then ONLY:
+      • sets the CSS var values in :root (from brand.json colors)
+      • swaps the font links + --font-* vars (from brand.json fonts)
+      • replaces the data-field text with the user's content
+      • repeats / removes slide archetypes (.slide--cover / --list / --stat / --cta)
+    DO NOT redesign the composition — it is already balanced and fills the canvas.
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    *{ margin:0; padding:0; box-sizing:border-box; }
+
+    /* ▼ THEME — the only thing brand-setup changes for colors/fonts */
+    :root{
+      --bg:#0E0A1C;
+      --surface:#181233;
+      --accent:#6D5CF6;
+      --ink:#FFFFFF;
+      --muted:#9A93C4;
+      --font-head:'Cairo', sans-serif;
+      --font-latin:'Space Grotesk', sans-serif;
+    }
+
+    .slide{
+      width:1080px; height:1350px; position:relative; overflow:hidden;
+      background:var(--bg); color:var(--ink); direction:rtl;
+      font-family:var(--font-head);
+      /* CRAFT: generous, equal margins + a 3-zone vertical layout that FILLS the canvas */
+      padding:96px 90px; display:flex; flex-direction:column;
+    }
+    /* subtle brand glow so the bg is never a flat dead rectangle */
+    .slide::before{
+      content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+      background:radial-gradient(ellipse 80% 50% at 70% 22%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%);
+    }
+    .slide > *{ position:relative; z-index:1; }
+
+    /* zone 1 — top bar */
+    .top{ display:flex; align-items:center; justify-content:space-between; }
+    .brand{ font-weight:800; font-size:32px; color:var(--accent); letter-spacing:.2px; }
+    .page{ font-family:var(--font-latin); font-weight:700; font-size:30px; color:var(--muted); direction:ltr; }
+
+    /* zone 2 — main (flex:1 + centered → no dead space, ever) */
+    .main{ flex:1; display:flex; flex-direction:column; justify-content:center; gap:34px; }
+
+    /* zone 3 — footer bar (consistent, intentional) */
+    .foot{ display:flex; align-items:center; justify-content:space-between;
+      padding-top:28px; border-top:1px solid color-mix(in srgb, var(--muted) 26%, transparent); }
+    .handle{ font-family:var(--font-latin); font-weight:700; font-size:30px; color:var(--muted); direction:ltr; }
+    .swipe{ font-size:30px; font-weight:700; color:var(--accent); }
+
+    /* shared pieces */
+    .kicker{ align-self:flex-start; background:color-mix(in srgb, var(--accent) 18%, transparent);
+      color:var(--accent); border:1.5px solid color-mix(in srgb, var(--accent) 45%, transparent);
+      font-weight:800; font-size:34px; padding:14px 30px; border-radius:999px; }
+    /* line-height 1.42 + top headroom so the hamza on أ/إ and dots on line 1 never clip */
+    .title{ font-size:112px; font-weight:900; line-height:1.42; padding-top:.1em; }
+    .title--mid{ font-size:90px; }
+    .sub{ font-size:48px; font-weight:600; line-height:1.45; color:var(--muted); }
+
+    /* list archetype */
+    .list{ display:flex; flex-direction:column; gap:26px; }
+    .row{ display:flex; align-items:center; gap:26px; background:var(--surface);
+      border:1px solid color-mix(in srgb, var(--muted) 18%, transparent);
+      border-radius:24px; padding:30px 34px; }
+    .row .n{ flex-shrink:0; width:70px; height:70px; border-radius:18px; background:var(--accent);
+      color:#fff; font-family:var(--font-latin); font-weight:700; font-size:38px;
+      display:flex; align-items:center; justify-content:center; }
+    .row .t{ font-size:46px; font-weight:700; line-height:1.35; }
+
+    /* stat archetype */
+    .stat{ align-items:center; text-align:center; }
+    .bignum{ font-family:var(--font-latin); font-weight:700; font-size:300px; line-height:.9;
+      color:var(--accent); direction:ltr; }
+    .stat .sub{ text-align:center; }
+
+    /* cta archetype */
+    .btn{ align-self:flex-start; background:var(--accent); color:#fff; font-weight:800;
+      font-size:52px; padding:30px 56px; border-radius:22px; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== COVER ===== -->
+  <section class="slide slide--cover">
+    <div class="top">
+      <span class="brand" data-field="brand" data-label="اسم البراند">Brand</span>
+      <span class="page">01</span>
+    </div>
+    <div class="main">
+      <span class="kicker" data-field="cover_kicker" data-label="شريط الغلاف">الموضوع</span>
+      <h1 class="title" data-field="cover_title" data-label="عنوان الغلاف">عنوان قوي يوقف السكرول من سطرين</h1>
+      <p class="sub" data-field="cover_sub" data-label="نص الغلاف">جملة وحدة بتشرح القيمة وبتخلي الواحد يسحب.</p>
+    </div>
+    <div class="foot">
+      <span class="handle" data-field="handle" data-label="الحساب">@handle</span>
+      <span class="swipe">اسحب ←</span>
+    </div>
+  </section>
+
+  <!-- ===== LIST ===== -->
+  <section class="slide slide--list">
+    <div class="top">
+      <span class="brand" data-field="brand" data-label="اسم البراند">Brand</span>
+      <span class="page">02</span>
+    </div>
+    <div class="main">
+      <h2 class="title--mid title" data-field="list_title" data-label="عنوان القائمة">عنوان السلايد</h2>
+      <div class="list">
+        <div class="row"><span class="n">1</span><span class="t" data-field="list_1" data-label="عنصر 1">النقطة الأولى مكتوبة بوضوح</span></div>
+        <div class="row"><span class="n">2</span><span class="t" data-field="list_2" data-label="عنصر 2">النقطة الثانية بنفس النبرة</span></div>
+        <div class="row"><span class="n">3</span><span class="t" data-field="list_3" data-label="عنصر 3">النقطة الثالثة تكمل الفكرة</span></div>
+      </div>
+    </div>
+    <div class="foot">
+      <span class="handle" data-field="handle" data-label="الحساب">@handle</span>
+      <span class="swipe">اسحب ←</span>
+    </div>
+  </section>
+
+  <!-- ===== STAT ===== -->
+  <section class="slide slide--stat">
+    <div class="top">
+      <span class="brand" data-field="brand" data-label="اسم البراند">Brand</span>
+      <span class="page">03</span>
+    </div>
+    <div class="main stat">
+      <span class="bignum" data-field="stat_num" data-label="الرقم">3x</span>
+      <h2 class="title--mid title" data-field="stat_title" data-label="عنوان الرقم">الرقم اللي بيثبت الفكرة</h2>
+      <p class="sub" data-field="stat_sub" data-label="شرح الرقم">سطر قصير بيوضح شو يعني هالرقم.</p>
+    </div>
+    <div class="foot">
+      <span class="handle" data-field="handle" data-label="الحساب">@handle</span>
+      <span class="swipe">اسحب ←</span>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="slide slide--cta">
+    <div class="top">
+      <span class="brand" data-field="brand" data-label="اسم البراند">Brand</span>
+      <span class="page">04</span>
+    </div>
+    <div class="main">
+      <h2 class="title" data-field="cta_title" data-label="عنوان النهاية">جاهز تبدأ؟</h2>
+      <p class="sub" data-field="cta_sub" data-label="نص النهاية">سطر بيدفع للإجراء، واضح ومباشر.</p>
+      <span class="btn" data-field="cta" data-label="زر الإجراء">احفظ المنشور</span>
+    </div>
+    <div class="foot">
+      <span class="handle" data-field="handle" data-label="الحساب">@handle</span>
+    </div>
+  </section>
+
+</body>
+</html>

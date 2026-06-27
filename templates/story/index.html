@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080" />
+  <title>Story Template</title>
+  <!--
+    PREMIUM STORY TEMPLATE — themeable, editable. (1080×1920)
+    The builder copies this file, then ONLY:
+      • sets the :root CSS var values (from brand.json colors) + font links
+      • replaces data-field text with the user's content
+      • repeats / removes frame archetypes (.story--hook / --point / --proof / --cta)
+    DO NOT redesign — the cinematic composition (glow + grid + vignette + highlight
+    blocks + safe zones) is already professional. Top ~240px / bottom ~220px are
+    Instagram-UI safe zones — keep key content out of them.
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *{ margin:0; padding:0; box-sizing:border-box; }
+
+    /* ▼ THEME — the only thing brand-setup changes for colors/fonts */
+    :root{
+      --bg:#0F0A1E;
+      --accent:#7C3AED;
+      --ink:#FFFFFF;
+      --muted:#9A93C4;
+      --proof:#22C55E;            /* numbers / proof only */
+      --font-head:'Cairo', sans-serif;
+      --font-latin:'Space Grotesk', sans-serif;
+    }
+
+    .story{
+      width:1080px; height:1920px; position:relative; overflow:hidden; color:var(--ink);
+      font-family:var(--font-head); direction:rtl;
+      background:radial-gradient(ellipse 78% 40% at 50% 36%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 62%), var(--bg);
+      display:flex; flex-direction:column; padding:240px 80px 220px;
+    }
+    /* fine grid, faded at edges */
+    .story::before{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+      background-image:linear-gradient(color-mix(in srgb, var(--accent) 12%, transparent) 1.5px, transparent 1.5px),
+                       linear-gradient(90deg, color-mix(in srgb, var(--accent) 12%, transparent) 1.5px, transparent 1.5px);
+      background-size:66px 66px;
+      -webkit-mask-image:radial-gradient(ellipse 82% 72% at 50% 44%, #000 28%, transparent 82%);
+      mask-image:radial-gradient(ellipse 82% 72% at 50% 44%, #000 28%, transparent 82%); }
+    /* vignette */
+    .story::after{ content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+      background:radial-gradient(ellipse 76% 64% at 50% 44%, transparent 48%, rgba(0,0,0,0.66) 100%); }
+
+    /* top bar */
+    .top{ position:absolute; top:150px; left:80px; right:80px; z-index:8; display:flex; align-items:center; justify-content:space-between; direction:ltr; }
+    .top .who{ display:flex; align-items:center; gap:14px; }
+    .top .who .dot{ width:58px; height:58px; border-radius:999px; background:var(--accent); border:2px solid color-mix(in srgb, var(--accent) 50%, #fff); }
+    .top .who .nm{ font-family:var(--font-latin); font-size:28px; font-weight:700; color:var(--ink); }
+    .top .pill{ font-size:24px; font-weight:800; color:var(--accent); border:2px solid color-mix(in srgb, var(--accent) 60%, transparent); border-radius:999px; padding:6px 20px; }
+    .top .cnt{ font-family:var(--font-latin); font-size:26px; font-weight:700; color:var(--muted); }
+
+    /* content (vertically centered, glanceable) */
+    .c{ flex:1; position:relative; z-index:6; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:26px; }
+    .ltr{ display:inline-block; direction:ltr; font-family:var(--font-latin); }
+
+    /* line-height 1.42 + top headroom so the hamza on أ/إ and dots on line 1 never clip */
+    .h1{ font-size:112px; font-weight:900; line-height:1.42; padding-top:.08em; }
+    .h2{ font-size:88px; font-weight:900; line-height:1.42; padding-top:.08em; }
+    .sub{ font-size:56px; font-weight:700; line-height:1.4; color:var(--muted); }
+
+    /* THE signature move — power word inside a solid block (mind the descender padding) */
+    .hb{ display:inline-block; border-radius:18px; padding:16px 30px 46px; line-height:1; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
+    .hb-w{ background:#fff; color:var(--bg); }
+    .hb-a{ background:var(--accent); color:#fff; box-shadow:0 12px 40px color-mix(in srgb, var(--accent) 50%, transparent); }
+    .proof{ color:var(--proof); }
+
+    .bignum{ font-family:var(--font-latin); font-size:300px; font-weight:700; line-height:.82; letter-spacing:-8px; color:var(--proof); direction:ltr; }
+
+    .feats{ width:100%; max-width:860px; display:flex; flex-direction:column; gap:18px; }
+    .feat{ display:flex; align-items:center; gap:22px; padding:24px 30px; border-radius:22px;
+      background:color-mix(in srgb, var(--accent) 10%, transparent); border:1.5px solid color-mix(in srgb, var(--accent) 28%, transparent); direction:rtl; text-align:right; }
+    .feat .fi{ width:60px; height:60px; border-radius:16px; background:var(--accent); flex-shrink:0; }
+    .feat .ft{ flex:1; font-size:48px; font-weight:800; }
+
+    .link-hint{ position:absolute; left:0; right:0; bottom:150px; z-index:8; display:flex; justify-content:center; }
+    .link-hint .pill{ display:inline-flex; align-items:center; gap:14px; background:rgba(255,255,255,0.94); color:var(--bg); font-size:38px; font-weight:800; border-radius:999px; padding:18px 36px; direction:ltr; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HOOK ===== -->
+  <section class="story story--hook">
+    <div class="top"><div class="who"><span class="dot"></span><span class="nm" data-field="handle" data-label="الحساب">@handle</span></div><span class="pill" data-field="brand" data-label="اسم البراند">Brand</span><span class="cnt">01 / 04</span></div>
+    <div class="c">
+      <div class="h1" data-field="hook_a" data-label="الخطاف سطر 1">للأمانة، هاد</div>
+      <div class="h1"><span class="hb hb-a" data-field="hook_b" data-label="الكلمة المميزة">أقوى شي</span></div>
+      <div class="h1" data-field="hook_c" data-label="الخطاف سطر 2">بنيته بحياتي</div>
+      <div class="sub" data-field="hook_sub" data-label="نص تحت الخطاف">👈 وشوف ليش</div>
+    </div>
+  </section>
+
+  <!-- ===== POINT ===== -->
+  <section class="story story--point">
+    <div class="top"><div class="who"><span class="dot"></span><span class="nm" data-field="handle" data-label="الحساب">@handle</span></div><span class="pill" data-field="brand" data-label="اسم البراند">Brand</span><span class="cnt">02 / 04</span></div>
+    <div class="c">
+      <div class="h2" data-field="point_title" data-label="عنوان النقطة">شو بتاخد منه</div>
+      <div class="feats">
+        <div class="feat"><span class="fi"></span><span class="ft" data-field="point_1" data-label="ميزة 1">ميزة واضحة وقوية</span></div>
+        <div class="feat"><span class="fi"></span><span class="ft" data-field="point_2" data-label="ميزة 2">ميزة تانية بنفس القوة</span></div>
+        <div class="feat"><span class="fi"></span><span class="ft" data-field="point_3" data-label="ميزة 3">ميزة تالتة تكمل الصورة</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROOF ===== -->
+  <section class="story story--proof">
+    <div class="top"><div class="who"><span class="dot"></span><span class="nm" data-field="handle" data-label="الحساب">@handle</span></div><span class="pill" data-field="brand" data-label="اسم البراند">Brand</span><span class="cnt">03 / 04</span></div>
+    <div class="c">
+      <div class="bignum ltr" data-field="proof_num" data-label="رقم الإثبات">+50</div>
+      <div class="h2" data-field="proof_title" data-label="عنوان الإثبات">رقم بيثبت الكلام</div>
+      <div class="sub" data-field="proof_sub" data-label="شرح الإثبات">سطر بيوضح شو يعني الرقم.</div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="story story--cta">
+    <div class="top"><div class="who"><span class="dot"></span><span class="nm" data-field="handle" data-label="الحساب">@handle</span></div><span class="pill" data-field="brand" data-label="اسم البراند">Brand</span><span class="cnt">04 / 04</span></div>
+    <div class="c">
+      <div class="h1" data-field="cta_a" data-label="نهاية سطر 1">جاهز تبدأ؟</div>
+      <div class="h1"><span class="hb hb-w" data-field="cta_b" data-label="كلمة الإجراء">ابعتلي</span></div>
+      <div class="sub" data-field="cta_sub" data-label="نص النهاية">وبوصلك كل التفاصيل.</div>
+    </div>
+    <div class="link-hint"><span class="pill" data-field="cta_link" data-label="رابط (موك)">🔗 your-link.com</span></div>
+  </section>
+
+</body>
+</html>
